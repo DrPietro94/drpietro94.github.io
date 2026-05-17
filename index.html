@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pietro DR | Progetti Digitali</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#07111f;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:40px;
+      background:
+      radial-gradient(circle at top left, rgba(47,134,201,.4), transparent 30%),
+      linear-gradient(135deg,#07111f,#0d1b2f);
+    }
+
+    h1{
+      font-size:72px;
+      margin-bottom:20px;
+      line-height:0.95;
+    }
+
+    .gradient{
+      background:linear-gradient(90deg,#59d6ff,#2f86c9);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    p{
+      max-width:800px;
+      color:#b7c4d6;
+      font-size:20px;
+      line-height:1.7;
+    }
+
+    .buttons{
+      margin-top:30px;
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .btn{
+      padding:14px 24px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:bold;
+      transition:.2s;
+    }
+
+    .primary{
+      background:linear-gradient(135deg,#2f86c9,#59d6ff);
+      color:#03101e;
+    }
+
+    .secondary{
+      border:1px solid rgba(255,255,255,.2);
+      color:white;
+      background:rgba(255,255,255,.05);
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+      padding:80px 30px;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .card{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:24px;
+      padding:28px;
+      transition:.25s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      background:rgba(255,255,255,.09);
+    }
+
+    .card h3{
+      font-size:28px;
+      margin-bottom:12px;
+    }
+
+    .card p{
+      font-size:16px;
+    }
+
+    footer{
+      padding:40px;
+      text-align:center;
+      color:#8fa0b5;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <h1>
+    Soluzioni digitali<br>
+    <span class="gradient">per lavorare meglio.</span>
+  </h1>
+
+  <p>
+    Portfolio professionale per presentare progetti software,
+    app mobile, gestionali web, automazioni AI e siti moderni.
+  </p>
+
+  <div class="buttons">
+    <a class="btn primary" href="#">Vedi i progetti</a>
+    <a class="btn secondary" href="mailto:pietrodellarocca94@gmail.com">Contattami</a>
+  </div>
+</section>
+
+<section class="cards">
+
+  <div class="card">
+    <h3>MOD14</h3>
+    <p>
+      App mobile per gestione turni, straordinari,
+      notti e riepiloghi personali.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Alcatraz</h3>
+    <p>
+      Gestionale modulare per workflow,
+      documenti e aree operative.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Perquisizioni</h3>
+    <p>
+      Software desktop per registrazione,
+      statistiche e stampa attività.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Automazioni AI</h3>
+    <p>
+      Workflow intelligenti e prototipi
+      per velocizzare attività operative.
+    </p>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Pietro DR · GitHub Pages Ready
+</footer>
+
+</body>
+</html>
