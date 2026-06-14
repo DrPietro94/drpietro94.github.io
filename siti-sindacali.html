@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SiNAPPe Toscana | Pietro DR</title>
+  <meta name="description" content="Caso progetto SiNAPPe Toscana: portale sindacale dinamico con area riservata, gestione contenuti, modulistica, convenzioni e assistente virtuale." />
+  <meta name="theme-color" content="#030712" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23030712'/%3E%3Cpath d='M14 45V15h21c8 0 14 6 14 14s-6 14-14 14H25v-9h10c3 0 5-2 5-5s-2-5-5-5H24v21H14z' fill='%2322d3ee'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <div id="cursor" aria-hidden="true"><div class="cur-dot"></div><div class="cur-ring"></div></div>
+  <canvas id="inkCanvas" aria-hidden="true"></canvas>
+  <canvas id="codeCanvas" aria-hidden="true"></canvas>
+
+  <header>
+    <div class="inner">
+      <a class="brand" href="index.html" aria-label="Torna alla home Pietro DR">
+        <div class="logo">P</div>
+        <div>
+          <h2>PIETRO DR</h2>
+          <span>Soluzioni digitali</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#progetti">Progetti</a>
+        <a href="index.html#chi-sono">Chi sono</a>
+      </nav>
+      <a class="top-btn" href="mailto:pietrodellarocca94@gmail.com">Contattami &rarr;</a>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <main>
+      <section class="project-hero">
+        <div>
+          <span class="eyebrow">Portale sindacale dinamico</span>
+          <h1>SiNAPPe Toscana</h1>
+          <p>
+            Portale istituzionale trasformato da sito statico a piattaforma PHP dinamica:
+            comunicazioni pubbliche, area riservata, gestione documenti, ruoli utente,
+            contenuti per istituto e assistente virtuale integrato.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:pietrodellarocca94@gmail.com?subject=Progetto%20SiNAPPe%20Toscana">Richiedi dettagli</a>
+            <a class="btn" href="index.html#progetti">Torna ai progetti</a>
+          </div>
+        </div>
+        <div class="device-preview site-preview">
+          <img class="preview-image" src="assets/sinappe/home-header-banner.png" alt="Banner del portale SiNAPPe Toscana">
+          <h2>Area riservata</h2>
+          <p>Dashboard per iscritti, referenti, admin e segreteria.</p>
+          <p>Comunicati, circolari, modulistica e convenzioni gestibili dal pannello.</p>
+        </div>
+      </section>
+
+      <section class="media-gallery" aria-label="Immagini del progetto SiNAPPe Toscana">
+        <article class="media-card wide">
+          <img src="assets/sinappe/home-header-banner.png" alt="Hero istituzionale SiNAPPe Toscana">
+          <div>
+            <strong>Home istituzionale</strong>
+            <span>Ingresso pubblico con identita regionale, accessi rapidi e gerarchia chiara per comunicazioni, servizi e area riservata.</span>
+          </div>
+        </article>
+
+        <article class="media-card">
+          <img src="assets/sinappe/home-card-comunicati.png" alt="Card comunicati SiNAPPe">
+          <div>
+            <strong>Comunicati e circolari</strong>
+            <span>Sezioni editoriali per pubblicare aggiornamenti, note, lettere e contenuti consultabili dagli utenti.</span>
+          </div>
+        </article>
+
+        <article class="media-card">
+          <img src="assets/sinappe/moduli-hero-riservata.png" alt="Modulistica area riservata">
+          <div>
+            <strong>Modulistica riservata</strong>
+            <span>Archivio documenti organizzato per categorie, pensato per iscritti e segreteria.</span>
+          </div>
+        </article>
+
+        <article class="media-card">
+          <img src="assets/sinappe/convenzioni-tessera-hero.png" alt="Convenzioni e tessera digitale">
+          <div>
+            <strong>Convenzioni e tessera</strong>
+            <span>Area dedicata a convenzioni attive, tessera digitale e strumenti utili per gli iscritti.</span>
+          </div>
+        </article>
+
+        <article class="media-card">
+          <img src="assets/sinappe/membership-card-base.png" alt="Base grafica della tessera digitale">
+          <div>
+            <strong>Tessera digitale</strong>
+            <span>Elemento visuale dell'area riservata per dare agli iscritti una presenza personale e riconoscibile.</span>
+          </div>
+        </article>
+
+        <article class="media-card">
+          <img src="assets/sinappe/assistant-avatar-chest.png" alt="Assistente virtuale SiNAPPe">
+          <div>
+            <strong>Assistente virtuale</strong>
+            <span>Avatar integrato nel sito per guidare gli utenti su FAQ, contatti, modulistica e informazioni ricorrenti.</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article><strong>Parte pubblica</strong><span>Home istituzionale, comunicati, circolari, modulistica, istituti toscani, segreteria regionale, convenzioni e contatti.</span></article>
+        <article><strong>Area riservata</strong><span>Login reale, profilo utente, tessera digitale, contenuti personalizzati e dashboard differenziata per ruolo.</span></article>
+        <article><strong>Gestione interna</strong><span>Pannelli per utenti, ruoli, note, commenti, moduli, convenzioni e pubblicita, con workflow editoriale controllato.</span></article>
+      </section>
+
+      <section class="functionality-section">
+        <div class="eyebrow">Funzionalita sviluppate</div>
+        <h2>Un portale pensato per comunicare, gestire e supportare gli iscritti.</h2>
+        <div class="functionality-grid">
+          <article>
+            <b>Comunicazioni dinamiche</b>
+            <p>Comunicati, circolari, lettere e note pubblicabili in modo ordinato, con pagina singola di dettaglio e archivio consultabile.</p>
+          </article>
+          <article>
+            <b>Area riservata per ruoli</b>
+            <p>Dashboard diversa per iscritto, referente, admin e segreteria, con azioni disponibili in base ai permessi assegnati.</p>
+          </article>
+          <article>
+            <b>Registrazione controllata</b>
+            <p>Accesso non libero: l'utente viene verificato tramite nome, cognome e matricola prima di completare l'account.</p>
+          </article>
+          <article>
+            <b>Profilo e tessera digitale</b>
+            <p>Sezione account con dati personali, istituto, avatar, cambio password e tessera digitale visualizzabile dall'area riservata.</p>
+          </article>
+          <article>
+            <b>Gestione contenuti</b>
+            <p>Pannelli per note, commenti, utenti, moduli, convenzioni e pubblicita, con filtri, stati e paginazione.</p>
+          </article>
+          <article>
+            <b>Referenti automatici</b>
+            <p>Un utente approvato con ruolo referente e istituto assegnato diventa automaticamente referente attivo del proprio istituto.</p>
+          </article>
+          <article>
+            <b>Assistente virtuale</b>
+            <p>Widget con avatar personalizzato, FAQ, keyword matching, risposte rapide e comportamento responsive.</p>
+          </article>
+          <article>
+            <b>Pronto per MySQL</b>
+            <p>Architettura predisposta al passaggio da storage JSON locale a database MySQL/MariaDB su hosting Linux.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-study">
+        <article class="case-block">
+          <span class="eyebrow">Architettura</span>
+          <h2>Da sito vetrina a portale operativo.</h2>
+          <p>
+            Il progetto e stato riorganizzato con una base PHP modulare: partial condivisi,
+            dati centralizzati, pagine dinamiche e storage locale JSON pronto per evolvere
+            verso MySQL/MariaDB. I vecchi file HTML reindirizzano alle nuove pagine PHP,
+            mantenendo ordinata la transizione.
+          </p>
+          <ul class="case-list">
+            <li>PHP con componenti condivisi per head, header, footer e widget.</li>
+            <li>Dati centralizzati per comunicati, moduli, istituti, servizi e convenzioni.</li>
+            <li>Preparazione al passaggio su hosting Linux con PHP, MySQL, SSL e backup.</li>
+          </ul>
+        </article>
+
+        <article class="case-block">
+          <span class="eyebrow">Area riservata</span>
+          <h2>Ruoli, contenuti e moderazione.</h2>
+          <p>
+            L'accesso non e libero: la registrazione passa da verifica di nome, cognome
+            e matricola. Ogni utente entra con un ruolo preciso e vede strumenti coerenti
+            con il proprio profilo operativo.
+          </p>
+          <ul class="case-list">
+            <li>Iscritto: legge comunicati, consulta strumenti e commenta.</li>
+            <li>Referente: crea note del proprio istituto e modera il proprio contesto.</li>
+            <li>Segreteria/admin: gestisce utenti, ruoli, pubblicazioni, moduli e convenzioni.</li>
+          </ul>
+        </article>
+
+        <article class="case-block">
+          <span class="eyebrow">Identita digitale</span>
+          <h2>Assistente virtuale e contenuti guidati.</h2>
+          <p>
+            Il portale integra un assistente/avatar coerente con l'identita visiva del sito,
+            pensato per aiutare l'utente su contatti, modulistica, convenzioni, comunicazioni
+            e informazioni ricorrenti.
+          </p>
+          <ul class="case-list">
+            <li>Widget flottante apribile e richiudibile da desktop e mobile.</li>
+            <li>Risposte basate su FAQ e keyword matching.</li>
+            <li>Avatar personalizzato in stile cartoon 3D, approvato come identita visiva del progetto.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article><strong>Comunicati e note</strong><span>Archivio pubblico e gestione interna con bozze, pubblicazione, archiviazione e commenti moderabili.</span></article>
+        <article><strong>Modulistica</strong><span>Archivio documentale filtrabile e aggiornabile tramite pannello dedicato.</span></article>
+        <article><strong>Convenzioni</strong><span>Gestione di convenzioni attive, bozze e aggiornamenti direttamente dall'area segreteria.</span></article>
+      </section>
+    </main>
+  </div>
+
+  <script src="shared.js"></script>
+</body>
+</html>

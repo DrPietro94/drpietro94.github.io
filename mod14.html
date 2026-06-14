@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QUADRANTE | Pietro DR</title>
+  <meta name="description" content="QUADRANTE: app mobile per la Polizia Penitenziaria. Turni, straordinari, cedolino NoiPA, spettanze, FESI e statistiche. Disponibile su Android e iOS." />
+  <meta name="theme-color" content="#030712" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23030712'/%3E%3Cpath d='M14 45V15h21c8 0 14 6 14 14s-6 14-14 14H25v-9h10c3 0 5-2 5-5s-2-5-5-5H24v21H14z' fill='%2322d3ee'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="project.css" />
+  <style>
+    .store-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+      align-items: center;
+    }
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 50px;
+      padding: 0 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--text);
+      transition: transform var(--t), box-shadow var(--t), border-color var(--t), background var(--t);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .store-badge:hover {
+      transform: translateY(-2px);
+      border-color: rgba(34,211,238,.32);
+      background: rgba(255,255,255,.10);
+    }
+    .store-badge svg { flex-shrink: 0; }
+    .store-badge.primary {
+      background: linear-gradient(135deg, var(--blue), #1749e8);
+      border-color: rgba(255,255,255,.08);
+      box-shadow: 0 12px 36px rgba(47,109,255,.32);
+    }
+    .store-badge.primary:hover { box-shadow: 0 20px 50px rgba(47,109,255,.48); }
+    .store-badge.coming {
+      opacity: .55;
+      cursor: default;
+      pointer-events: none;
+    }
+    .badge-label { display: flex; flex-direction: column; line-height: 1.2; }
+    .badge-label small { font-size: 10px; font-weight: 600; opacity: .7; letter-spacing: .06em; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .pricing-card {
+      padding: 26px;
+      border-radius: var(--radius);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 55px rgba(0,0,0,.24);
+      transition: border-color var(--t), transform var(--t), box-shadow var(--t);
+    }
+    .pricing-card:hover {
+      border-color: rgba(34,211,238,.2);
+      transform: translateY(-4px);
+      box-shadow: 0 26px 70px rgba(0,0,0,.32);
+    }
+    .pricing-card.featured {
+      border-color: rgba(47,109,255,.4);
+      background: linear-gradient(145deg, rgba(47,109,255,.12), var(--panel));
+      box-shadow: 0 18px 55px rgba(47,109,255,.18);
+    }
+    .pricing-tier {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+    .pricing-price {
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 6px;
+      letter-spacing: -.02em;
+    }
+    .pricing-price small { font-size: 14px; font-weight: 600; opacity: .6; }
+    .pricing-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.58;
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .pricing-features { list-style: none; display: grid; gap: 9px; }
+    .pricing-features li {
+      font-size: 14px;
+      color: #c4d0e8;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+    }
+    .pricing-features li::before { content: "✓"; color: var(--cyan); font-weight: 800; flex-shrink: 0; }
+    .pricing-features li.muted::before { content: "·"; color: var(--muted); }
+    .pricing-features li.muted { color: var(--muted); }
+
+    @media (max-width: 860px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="cursor" aria-hidden="true"><div class="cur-dot"></div><div class="cur-ring"></div></div>
+  <canvas id="inkCanvas" aria-hidden="true"></canvas>
+  <canvas id="codeCanvas" aria-hidden="true"></canvas>
+
+  <header>
+    <div class="inner">
+      <a class="brand" href="index.html" aria-label="Torna alla home Pietro DR">
+        <div class="logo">P</div>
+        <div>
+          <h2>PIETRO DR</h2>
+          <span>Soluzioni digitali</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#progetti">Progetti</a>
+        <a href="index.html#chi-sono">Chi sono</a>
+      </nav>
+      <a class="top-btn" href="mailto:pietrodellarocca94@gmail.com">Contattami &rarr;</a>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <main>
+      <section class="project-hero">
+        <div>
+          <span class="eyebrow">App Mobile · Android &amp; iOS</span>
+          <h1>QUADRANTE</h1>
+          <p>
+            L'app pensata per il personale della Polizia Penitenziaria.
+            Turni, straordinari, cedolino NoiPA, spettanze e FESI —
+            tutto calcolato automaticamente, sempre aggiornato.
+          </p>
+          <div class="store-badges">
+            <a class="store-badge primary"
+               href="https://play.google.com/store/apps/details?id=app.quadrante"
+               target="_blank" rel="noopener">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3.18 23.76c.3.17.65.19.97.07l11.37-6.57-2.45-2.45-9.89 8.95zm-1.06-18.5C2.04 5.57 2 5.89 2 6.23v11.54c0 .34.04.66.12.97l.06.18 6.47-6.47v-.18L2.12 5.08l-.06.18zm16.55 8.26-2.21-1.28-2.72 2.72 2.72 2.72 2.23-1.29c.64-.37.64-1.11-.02-1.87zM4.15.24c-.32-.12-.67-.1-.97.07l9.89 9-2.45 2.44L4.15.24z"/>
+              </svg>
+              <div class="badge-label">
+                <small>Disponibile su</small>
+                Google Play
+              </div>
+            </a>
+            <div class="store-badge coming">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              </svg>
+              <div class="badge-label">
+                <small>Prossimamente su</small>
+                App Store
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="device-preview phone-screenshots-hero">
+          <div class="psh-frame psh-splash">
+            <img src="assets/quadrante/splash.png" alt="Splash screen QUADRANTE">
+          </div>
+          <div class="psh-frame psh-home">
+            <img src="assets/quadrante/home.png" alt="Dashboard QUADRANTE">
+          </div>
+        </div>
+      </section>
+
+      <section class="media-gallery" aria-label="Schermate dell'app QUADRANTE">
+        <article class="media-card phone-shot wide">
+          <img src="assets/quadrante/home.png" alt="Dashboard operativa QUADRANTE">
+          <div>
+            <strong>Dashboard operativa</strong>
+            <span>Turno del giorno con orario, ore lavorate e straordinario. Card mensili per monte ore, RC, RR e straordinario accumulato.</span>
+          </div>
+        </article>
+
+        <article class="media-card phone-shot">
+          <img src="assets/quadrante/calendario.png" alt="Calendario turni QUADRANTE">
+          <div>
+            <strong>Calendario turni</strong>
+            <span>Vista mensile con celle colorate per tipo turno: M, P, N, RS e assenze. Riepilogo totali in basso.</span>
+          </div>
+        </article>
+
+        <article class="media-card phone-shot">
+          <img src="assets/quadrante/statistiche.png" alt="Statistiche mensili QUADRANTE">
+          <div>
+            <strong>Statistiche</strong>
+            <span>Notturni, festivi, monte ore straordinario, superfestivi, RS mancanti e avvisi automatici su RR maturati.</span>
+          </div>
+        </article>
+
+        <article class="media-card phone-shot">
+          <img src="assets/quadrante/spettanze.png" alt="Contatori spettanze QUADRANTE">
+          <div>
+            <strong>Spettanze e contatori</strong>
+            <span>Vista annuale con cerchi progressivi per Monte Ore, RR, RC, Congedo, Malattia e Festività Soppressa.</span>
+          </div>
+        </article>
+
+        <article class="media-card phone-shot">
+          <img src="assets/quadrante/tour.png" alt="Onboarding guidato QUADRANTE">
+          <div>
+            <strong>Tour guidato</strong>
+            <span>23 step interattivi al primo avvio: il mascot agente accompagna nella configurazione e mostra tutte le funzioni.</span>
+          </div>
+        </article>
+
+        <article class="media-card phone-shot wide">
+          <img src="assets/quadrante/splash.png" alt="Logo QUADRANTE">
+          <div>
+            <strong>Cedolino NoiPA</strong>
+            <span>Import PDF diretto del cedolino NoiPA. Calcolo automatico di LORDO, trattenute previdenziali e NETTO con le formule reali del contratto.</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article><strong>Turni automatici</strong><span>Straordinari, notturni e festivi calcolati su ogni giornata senza inserimento manuale. Il cambio guardia da 10 minuti è incluso.</span></article>
+        <article><strong>Cedolino NoiPA</strong><span>Importa il PDF del cedolino e ottieni LORDO, trattenute e NETTO calcolati con le aliquote reali. Gli straordinari vengono abbinati con lo sfasamento di 2 mesi.</span></article>
+        <article><strong>Spettanze e FESI</strong><span>Contatori CO, FS, CMAL, RR, RC aggiornati in tempo reale. FESI A1/A2/A3 con avanzamento automatico e reset annuale corretto.</span></article>
+      </section>
+
+      <section class="functionality-section">
+        <div class="eyebrow">Funzionalità</div>
+        <h2>Tutto quello che serve, niente di superfluo.</h2>
+        <div class="functionality-grid">
+          <article>
+            <b>Calendario turni</b>
+            <p>Vista mensile con celle colorate. Riepilogo automatico di turni, ore lavorate e assenze in fondo allo schermo.</p>
+          </article>
+          <article>
+            <b>Calcolo automatico</b>
+            <p>M, P, N, RS con orari configurabili. Straordinario, notturno e festivo calcolati su ogni giornata senza toggle manuali.</p>
+          </article>
+          <article>
+            <b>Contatori RC/RR</b>
+            <p>Riposi compensativi e rientri: maturati, fruiti e residui aggiornati in tempo reale per ogni chiusura mensile.</p>
+          </article>
+          <article>
+            <b>Monte ore</b>
+            <b></b>
+            <p>Straordinario a pagamento e ore a credito, con rounding mensile automatico secondo le regole contrattuali.</p>
+          </article>
+          <article>
+            <b>Cedolino NoiPA</b>
+            <p>Import PDF con riconoscimento automatico delle voci. LORDO, trattenute previdenziali (9,15% + 58,40) e NETTO.</p>
+          </article>
+          <article>
+            <b>FESI</b>
+            <p>Contatori annuali A1/A2/A3, turni pagabili e quadranti, con avanzamento automatico e vista dedicata.</p>
+          </article>
+          <article>
+            <b>Notifiche push</b>
+            <p>Promemoria automatici configurabili per turni, permessi in scadenza e avvisi su RR maturati.</p>
+          </article>
+          <article>
+            <b>Tour guidato</b>
+            <p>23 step interattivi con spotlight e mascot agente. Tour PRO separato per le funzioni avanzate.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <div class="eyebrow" style="margin-top:42px;">Piani</div>
+      <h2 style="margin-bottom:4px;">Gratis per sempre, PRO per chi vuole di più.</h2>
+      <p style="margin-bottom:0;">Le funzioni principali sono gratuite. Il piano PRO sblocca cedolino, spettanze avanzate e statistiche complete.</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-tier">Free</div>
+          <div class="pricing-price">€0 <small>/ sempre</small></div>
+          <p class="pricing-desc">Turni, calendario e statistiche base senza costi.</p>
+          <ul class="pricing-features">
+            <li>Calendario turni completo</li>
+            <li>Calcolo automatico straordinari</li>
+            <li>Statistiche mensili</li>
+            <li>Tour guidato</li>
+            <li>Notifiche push</li>
+            <li class="muted">Cedolino NoiPA</li>
+            <li class="muted">Spettanze e FESI avanzati</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-tier">No Ads</div>
+          <div class="pricing-price">€3,99 <small>/ una volta</small></div>
+          <p class="pricing-desc">Rimuovi la pubblicità con un acquisto unico.</p>
+          <ul class="pricing-features">
+            <li>Tutto il piano Free</li>
+            <li>Nessuna pubblicità</li>
+            <li class="muted">Cedolino NoiPA</li>
+            <li class="muted">Spettanze e FESI avanzati</li>
+          </ul>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-tier">PRO</div>
+          <div class="pricing-price">€3,99 <small>/ mese</small></div>
+          <p class="pricing-desc">Accesso completo a tutte le funzionalità. Disponibile anche annuale a €29,99.</p>
+          <ul class="pricing-features">
+            <li>Tutto il piano Free</li>
+            <li>Nessuna pubblicità</li>
+            <li>Cedolino NoiPA (import PDF)</li>
+            <li>Spettanze complete (CO, FS, CMAL, RR, RC)</li>
+            <li>FESI avanzato A1/A2/A3</li>
+            <li>Statistiche avanzate</li>
+          </ul>
+        </div>
+      </div>
+
+      <section class="case-study" style="margin-top:42px;">
+        <article class="case-block">
+          <span class="eyebrow">Architettura</span>
+          <h2>Flutter modulare, dati locali.</h2>
+          <p>
+            L'app è organizzata per feature isolate con pattern data/domain/presentation.
+            Riverpod gestisce lo stato, GoRouter la navigazione, SQLite il database locale.
+            RevenueCat gestisce gli abbonamenti in-app su Android e iOS.
+          </p>
+          <ul class="case-list">
+            <li>Flutter con struttura modulare: home, shifts, calendar, statistics, payroll, spettanze, FESI, settings.</li>
+            <li>Riverpod per state management reattivo, GoRouter per navigazione dichiarativa.</li>
+            <li>SQLite locale per tutti i dati — nessun account richiesto, tutto sul dispositivo.</li>
+            <li>RevenueCat per acquisti in-app cross-platform (Android + iOS).</li>
+          </ul>
+        </article>
+
+        <article class="case-block">
+          <span class="eyebrow">Cedolino e calcoli</span>
+          <h2>Dal PDF alle trattenute reali.</h2>
+          <p>
+            Il parser PDF riconosce le voci del cedolino NoiPA e le abbina ai turni del mese corrispondente,
+            tenendo conto dello sfasamento di 2 mesi sugli straordinari.
+            Le trattenute previdenziali usano le aliquote contrattuali reali.
+          </p>
+          <ul class="case-list">
+            <li>Syncfusion PDF: parsing voci NoiPA con riconoscimento automatico della struttura.</li>
+            <li>Formula trattenute previdenziali: 9,15% sulla base + €58,40 fisso mensili.</li>
+            <li>Straordinari cedolino abbinati al mese di competenza reale (sfasamento 2 mesi).</li>
+          </ul>
+        </article>
+
+        <article class="case-block">
+          <span class="eyebrow">Distribuzione</span>
+          <h2>Android live, iOS in arrivo.</h2>
+          <p>
+            Quadrante è disponibile su Google Play Store. La versione iOS è in fase di
+            pubblicazione su App Store con le stesse funzionalità, incluse notifiche push
+            e widget home screen.
+          </p>
+          <ul class="case-list">
+            <li>Android: live su Google Play Store — v1.0.0.</li>
+            <li>iOS: in pubblicazione su App Store — notifiche push e ATT/AdMob inclusi.</li>
+            <li>Widget home screen iOS (Swift, App Group) per visualizzare il turno del giorno.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="grid" style="margin-top:28px;">
+        <article><strong>Home operativa</strong><span>Turno del giorno, orario, breakdown delle ore e card rapide per RC, RR, monte ore e straordinario mensile.</span></article>
+        <article><strong>Profilo agente</strong><span>Configurazione con nome, grado, istituto, anni di servizio, fasce orarie notturne e tipo servizio.</span></article>
+        <article><strong>Contattami</strong><span>Per supporto o segnalazioni scrivi a <a href="mailto:pietrodellarocca94@gmail.com" style="color:var(--cyan)">pietrodellarocca94@gmail.com</a></span></article>
+      </section>
+    </main>
+  </div>
+
+  <script src="shared.js"></script>
+</body>
+</html>

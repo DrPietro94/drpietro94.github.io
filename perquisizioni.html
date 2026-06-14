@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perquisizioni | Pietro DR</title>
+  <meta name="description" content="App per gestione digitale di perquisizioni, inventari e allegati." />
+  <meta name="theme-color" content="#030712" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23030712'/%3E%3Cpath d='M14 45V15h21c8 0 14 6 14 14s-6 14-14 14H25v-9h10c3 0 5-2 5-5s-2-5-5-5H24v21H14z' fill='%2322d3ee'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <div id="cursor" aria-hidden="true"><div class="cur-dot"></div><div class="cur-ring"></div></div>
+  <canvas id="inkCanvas" aria-hidden="true"></canvas>
+  <canvas id="codeCanvas" aria-hidden="true"></canvas>
+
+  <header>
+    <div class="inner">
+      <a class="brand" href="index.html" aria-label="Torna alla home Pietro DR">
+        <div class="logo">P</div>
+        <div>
+          <h2>PIETRO DR</h2>
+          <span>Soluzioni digitali</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#progetti">Progetti</a>
+        <a href="index.html#chi-sono">Chi sono</a>
+      </nav>
+      <a class="top-btn" href="mailto:pietrodellarocca94@gmail.com">Contattami &rarr;</a>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <main>
+      <section class="project-hero">
+        <div>
+          <span class="eyebrow">Digital workflow</span>
+          <h1>Perquisizioni</h1>
+          <p>Uno strumento per ordinare procedure, inventari, verbali e allegati in un flusso digitale piu preciso e controllabile.</p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:pietrodellarocca94@gmail.com?subject=App%20Perquisizioni">Richiedi dettagli</a>
+            <a class="btn" href="index.html#progetti">Torna ai progetti</a>
+          </div>
+        </div>
+        <div class="device-preview list-preview">
+          <b>Inventario digitale</b>
+          <p>Oggetto registrato</p><p>Allegato acquisito</p><p>Verbale generato</p>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article><strong>Procedure guidate</strong><span>Meno errori e piu ordine nei passaggi operativi.</span></article>
+        <article><strong>Inventari</strong><span>Elementi catalogati con dati, note e allegati.</span></article>
+        <article><strong>Documentazione</strong><span>Verbali e riepiloghi pronti per archiviazione e controllo.</span></article>
+      </section>
+    </main>
+  </div>
+
+  <script src="shared.js"></script>
+</body>
+</html>
