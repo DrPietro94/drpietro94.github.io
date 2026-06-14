@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — QUADRANTE</title>
+  <meta name="description" content="Informativa sulla privacy dell'app QUADRANTE." />
+  <meta name="theme-color" content="#030712" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030712;
+      --text: #eef4ff;
+      --muted: #7a8ba8;
+      --blue: #2f6dff;
+      --cyan: #22d3ee;
+      --line: rgba(255,255,255,.10);
+      --panel: rgba(9,18,40,.82);
+      --radius: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Outfit', 'Segoe UI', Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #02040d 0%, #061124 48%, #02040d 100%);
+      min-height: 100dvh;
+      padding: 0 0 80px;
+    }
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(2,4,13,.78);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--line);
+    }
+    .inner {
+      width: min(900px, calc(100% - 48px));
+      margin: auto; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+    .logo {
+      width: 40px; height: 40px; border-radius: 11px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      font-weight: 900; font-size: 16px; color: #fff;
+    }
+    .brand-name { font-size: 15px; font-weight: 800; letter-spacing: .04em; }
+    .content {
+      width: min(900px, calc(100% - 48px));
+      margin: 48px auto 0;
+    }
+    .eyebrow {
+      color: var(--cyan); font-size: 12px; font-weight: 800;
+      letter-spacing: .18em; text-transform: uppercase; margin-bottom: 12px;
+      display: block;
+    }
+    h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 900; letter-spacing: -.02em; margin-bottom: 8px; }
+    .updated { color: var(--muted); font-size: 14px; margin-bottom: 40px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+    h2 { font-size: 20px; font-weight: 800; margin-bottom: 14px; color: var(--text); }
+    p { color: var(--muted); line-height: 1.72; font-size: 15.5px; margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+    ul { color: var(--muted); line-height: 1.72; font-size: 15.5px; padding-left: 20px; }
+    ul li { margin-bottom: 6px; }
+    a { color: var(--cyan); }
+    @media (max-width: 600px) {
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="inner">
+      <a class="brand" href="mod14.html">
+        <div class="logo">Q</div>
+        <span class="brand-name">QUADRANTE</span>
+      </a>
+      <a href="mod14.html" style="color:var(--muted);font-size:14px;font-weight:700;text-decoration:none;">← Torna all'app</a>
+    </div>
+  </header>
+
+  <div class="content">
+    <span class="eyebrow">Informativa</span>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Ultimo aggiornamento: 14 giugno 2026</p>
+
+    <div class="card">
+      <h2>Chi siamo</h2>
+      <p>QUADRANTE è un'app sviluppata da Pietro Della Rocca, con sede in Italia. Per qualsiasi domanda sulla privacy puoi contattarci all'indirizzo: <a href="mailto:pietrodellarocca94@gmail.com">pietrodellarocca94@gmail.com</a></p>
+    </div>
+
+    <div class="card">
+      <h2>Dati raccolti dall'app</h2>
+      <p>QUADRANTE salva tutti i dati dell'utente (turni, permessi, cedolini, profilo) <strong>esclusivamente sul dispositivo locale</strong>. Nessun dato personale viene trasmesso ai nostri server.</p>
+      <p>I dati memorizzati localmente includono:</p>
+      <ul>
+        <li>Turni di lavoro e calendario</li>
+        <li>Dati del profilo (nome, grado, istituto)</li>
+        <li>Dati del cedolino importati da PDF</li>
+        <li>Contatori permessi e spettanze</li>
+      </ul>
+      <p>Questi dati rimangono sul dispositivo e vengono eliminati disinstallando l'app.</p>
+    </div>
+
+    <div class="card">
+      <h2>Pubblicità e monitoraggio (AdMob)</h2>
+      <p>La versione gratuita dell'app utilizza <strong>Google AdMob</strong> per mostrare annunci pubblicitari. AdMob può raccogliere dati per personalizzare gli annunci, incluso l'Advertising Identifier (IDFA) del dispositivo, previa tua esplicita autorizzazione tramite il dialogo App Tracking Transparency (ATT) richiesto al primo avvio.</p>
+      <p>Se neghi l'autorizzazione al monitoraggio, verranno mostrati annunci non personalizzati. Puoi modificare questa preferenza in qualsiasi momento da <strong>Impostazioni → Privacy → Tracciamento</strong> sul tuo dispositivo iOS.</p>
+      <p>Per la privacy policy di Google AdMob: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+    </div>
+
+    <div class="card">
+      <h2>Acquisti in-app (RevenueCat)</h2>
+      <p>Gli acquisti in-app (abbonamento PRO, No Ads) sono gestiti tramite <strong>RevenueCat</strong> e i rispettivi store (App Store, Google Play). RevenueCat riceve un identificatore anonimo del dispositivo per gestire lo stato dell'abbonamento. Non vengono condivisi dati personali identificabili.</p>
+      <p>Per la privacy policy di RevenueCat: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></p>
+    </div>
+
+    <div class="card">
+      <h2>Notifiche push</h2>
+      <p>L'app può inviare notifiche push locali (promemoria turni, avvisi) se l'utente concede il permesso. Queste notifiche sono generate localmente sul dispositivo e non richiedono connessione a server esterni.</p>
+    </div>
+
+    <div class="card">
+      <h2>Dati condivisi con terze parti</h2>
+      <p>Non vendiamo né condividiamo dati personali con terze parti, ad eccezione di quanto descritto per AdMob e RevenueCat nelle sezioni precedenti.</p>
+    </div>
+
+    <div class="card">
+      <h2>Modifiche a questa policy</h2>
+      <p>Eventuali modifiche a questa informativa verranno pubblicate su questa pagina con la data di aggiornamento. L'uso continuato dell'app dopo le modifiche costituisce accettazione della nuova policy.</p>
+    </div>
+
+    <div class="card">
+      <h2>Contatti</h2>
+      <p>Per qualsiasi domanda o richiesta riguardante la privacy: <a href="mailto:pietrodellarocca94@gmail.com">pietrodellarocca94@gmail.com</a></p>
+    </div>
+  </div>
+</body>
+</html>
