@@ -437,9 +437,46 @@ p {
 }
 .phone-screenshots-hero::after { display: none; }
 
-.psh-frame {
+/* corpo telefono — più grande dello schermo di 12px per lato */
+.psh-wrap {
   position: absolute;
-  border-radius: 32px;
+  background: linear-gradient(170deg, #1c2440 0%, #0d1525 45%, #060c18 100%);
+  border-radius: 42px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+/* tasti volume: mute + vol+ + vol- */
+.psh-wrap::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 88px;
+  width: 4px;
+  height: 26px;
+  background: #101724;
+  border-radius: 2px 0 0 2px;
+  box-shadow: 0 38px 0 #101724, 0 70px 0 #101724;
+}
+
+/* tasto power */
+.psh-wrap::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: 108px;
+  width: 4px;
+  height: 50px;
+  background: #101724;
+  border-radius: 0 2px 2px 0;
+}
+
+/* schermo — stessa dimensione di prima */
+.psh-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
   overflow: hidden;
   background: #06101e;
 }
@@ -480,31 +517,27 @@ p {
   display: block;
 }
 
+/* outer = screen + 24px (12 per lato) */
 .psh-splash {
-  width: 170px;
-  height: 348px;
-  left: 16px;
-  top: 56px;
+  width: 194px;
+  height: 372px;
+  left: 4px;
+  top: 44px;
   transform: rotate(-5deg);
   opacity: .72;
-  box-shadow:
-    0 0 0 12px #0c1528,
-    0 0 0 13px rgba(255,255,255,.07),
-    0 28px 70px rgba(0,0,0,.68);
+  box-shadow: 0 28px 72px rgba(0,0,0,.68);
   z-index: 1;
 }
 .psh-home {
-  width: 204px;
-  height: 422px;
-  right: 8px;
-  top: 16px;
+  width: 228px;
+  height: 446px;
+  right: -4px;
+  top: 4px;
   transform: rotate(3deg);
   z-index: 2;
   box-shadow:
-    0 0 0 12px #0c1528,
-    0 0 0 13px rgba(34,211,238,.2),
     0 36px 90px rgba(0,0,0,.72),
-    0 0 50px rgba(47,109,255,.16);
+    0 0 50px rgba(47,109,255,.18);
 }
 
 /* ── PHONE SHOT MEDIA CARDS ── */
@@ -724,16 +757,16 @@ p {
   .phone-screenshots-hero { min-height: 340px; }
 
   .psh-splash {
-    width: 130px;
-    height: 268px;
-    left: 8px;
-    top: 36px;
+    width: 154px;
+    height: 292px;
+    left: 0;
+    top: 24px;
   }
   .psh-home {
-    width: 158px;
-    height: 324px;
+    width: 182px;
+    height: 348px;
     right: 0;
-    top: 8px;
+    top: 0;
   }
 
   .actions { flex-direction: column; }
