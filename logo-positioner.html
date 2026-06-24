@@ -216,6 +216,71 @@
     <p class="copied" id="ced-copied">✓ Copiato!</p>
   </div>
 
+  <style>
+    .frame-arena {
+      position: relative;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      overflow: visible;
+      flex-shrink: 0;
+    }
+    .frame-arena > img { display: block; border-radius: 11px; }
+    .frame-dragger {
+      position: absolute;
+      cursor: move;
+      z-index: 10;
+      user-select: none;
+    }
+    .frame-dragger > img { width:100%; height:100%; object-fit:fill; display:block; pointer-events:none; }
+    .rh {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 20px; height: 20px;
+      background: #22d3ee;
+      border-radius: 4px;
+      cursor: se-resize;
+      z-index: 11;
+      opacity: .85;
+    }
+    .rh::after { content:"↘"; font-size:11px; color:#030712; display:flex; align-items:center; justify-content:center; height:100%; font-weight:900; }
+  </style>
+
+  <hr>
+
+  <!-- ── CORNICE IPHONE — SPLASH ── -->
+  <div class="section">
+    <span class="section-title">Cornice iPhone — Splash</span>
+    <p style="font-size:12px;color:#7a8ba8;margin-top:-8px;">Trascina la cornice. Angolo in basso a destra = ridimensiona.</p>
+    <div class="frame-arena" style="width:170px;height:348px;">
+      <img src="assets/quadrante/splash.png" style="width:170px;height:348px;object-fit:cover;object-position:top;">
+      <div class="frame-dragger" id="fd-splash" style="left:0;top:0;width:170px;height:348px;">
+        <img src="assets/quadrante/iphone-frame.png" alt="">
+        <div class="rh"></div>
+      </div>
+    </div>
+    <div class="output" id="fr-splash-out"></div>
+    <button class="btn" onclick="copiaFrame('fr-splash-out','fr-splash-copied')">Copia CSS</button>
+    <p class="copied" id="fr-splash-copied">✓ Copiato!</p>
+  </div>
+
+  <hr>
+
+  <!-- ── CORNICE IPHONE — HOME ── -->
+  <div class="section">
+    <span class="section-title">Cornice iPhone — Home</span>
+    <p style="font-size:12px;color:#7a8ba8;margin-top:-8px;">Trascina la cornice. Angolo in basso a destra = ridimensiona.</p>
+    <div class="frame-arena" style="width:204px;height:422px;">
+      <img src="assets/quadrante/home.png" style="width:204px;height:422px;object-fit:cover;object-position:top;">
+      <div class="frame-dragger" id="fd-home" style="left:0;top:0;width:204px;height:422px;">
+        <img src="assets/quadrante/iphone-frame.png" alt="">
+        <div class="rh"></div>
+      </div>
+    </div>
+    <div class="output" id="fr-home-out"></div>
+    <button class="btn" onclick="copiaFrame('fr-home-out','fr-home-copied')">Copia CSS</button>
+    <p class="copied" id="fr-home-copied">✓ Copiato!</p>
+  </div>
+
   <script>
     const items = {
       logo: {
@@ -293,6 +358,61 @@
     updateCard('stat');
     updateCard('tour');
     updateCard('ced');
+
+    /* ── CORNICE IPHONE DRAG & RESIZE ── */
+    function initFrameDrag(dragId, outId) {
+      const drag = document.getElementById(dragId);
+      const handle = drag.querySelector('.rh');
+      const out  = document.getElementById(outId);
+      let mode = null, sx, sy, sl, st, sw, sh;
+
+      drag.addEventListener('mousedown', e => {
+        if (e.target === handle) {
+          mode = 'resize';
+          sw = drag.offsetWidth; sh = drag.offsetHeight;
+        } else {
+          mode = 'drag';
+          sl = drag.offsetLeft; st = drag.offsetTop;
+        }
+        sx = e.clientX; sy = e.clientY;
+        e.preventDefault();
+      });
+
+      document.addEventListener('mousemove', e => {
+        if (!mode) return;
+        const dx = e.clientX - sx, dy = e.clientY - sy;
+        if (mode === 'drag') {
+          drag.style.left = (sl + dx) + 'px';
+          drag.style.top  = (st + dy) + 'px';
+        } else {
+          drag.style.width  = Math.max(60,  sw + dx) + 'px';
+          drag.style.height = Math.max(100, sh + dy) + 'px';
+        }
+        sync();
+      });
+
+      document.addEventListener('mouseup', () => { mode = null; });
+
+      function sync() {
+        const l = Math.round(drag.offsetLeft),
+              t = Math.round(drag.offsetTop),
+              w = Math.round(drag.offsetWidth),
+              h = Math.round(drag.offsetHeight);
+        out.textContent = 'width: ' + w + 'px;\nheight: ' + h + 'px;\nleft: ' + l + 'px;\ntop: ' + t + 'px;';
+      }
+      sync();
+    }
+
+    function copiaFrame(outId, copiedId) {
+      navigator.clipboard.writeText(document.getElementById(outId).textContent).then(() => {
+        const el = document.getElementById(copiedId);
+        el.classList.add('show');
+        setTimeout(() => el.classList.remove('show'), 2000);
+      });
+    }
+
+    initFrameDrag('fd-splash', 'fr-splash-out');
+    initFrameDrag('fd-home',   'fr-home-out');
   </script>
 </body>
 </html>
