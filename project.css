@@ -437,61 +437,24 @@ p {
 }
 .phone-screenshots-hero::after { display: none; }
 
-/* corpo telefono — più grande dello schermo di 12px per lato */
-.psh-wrap {
-  position: absolute;
-  background: linear-gradient(170deg, #1c2440 0%, #0d1525 45%, #060c18 100%);
-  border-radius: 42px;
-  padding: 12px;
-  border: 1px solid rgba(255,255,255,.08);
-}
-
-/* tasti volume: mute + vol+ + vol- */
-.psh-wrap::before {
-  content: "";
-  position: absolute;
-  left: -4px;
-  top: 88px;
-  width: 4px;
-  height: 26px;
-  background: #101724;
-  border-radius: 2px 0 0 2px;
-  box-shadow: 0 38px 0 #101724, 0 70px 0 #101724;
-}
-
-/* tasto power */
-.psh-wrap::after {
-  content: "";
-  position: absolute;
-  right: -4px;
-  top: 108px;
-  width: 4px;
-  height: 50px;
-  background: #101724;
-  border-radius: 0 2px 2px 0;
-}
-
-/* schermo — stessa dimensione di prima */
 .psh-frame {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
+  position: absolute;
+  border-radius: 32px;
   overflow: hidden;
   background: #06101e;
 }
 
-/* Dynamic Island */
+/* notch */
 .psh-frame::before {
   content: "";
   position: absolute;
-  top: 10px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 66px;
-  height: 22px;
-  background: #020609;
-  border-radius: 14px;
+  width: 56px;
+  height: 6px;
+  background: #040b18;
+  border-radius: 0 0 6px 6px;
   z-index: 10;
 }
 
@@ -517,27 +480,30 @@ p {
   display: block;
 }
 
-/* outer = screen + 24px (12 per lato) */
 .psh-splash {
-  width: 194px;
-  height: 372px;
-  left: 4px;
-  top: 44px;
+  width: 170px;
+  height: 348px;
+  left: 16px;
+  top: 56px;
   transform: rotate(-5deg);
-  opacity: .72;
-  box-shadow: 0 28px 72px rgba(0,0,0,.68);
+  opacity: .7;
+  box-shadow:
+    0 0 0 7px #050c1a,
+    0 0 0 8px rgba(255,255,255,.09),
+    0 24px 60px rgba(0,0,0,.6);
   z-index: 1;
 }
 .psh-home {
-  width: 228px;
-  height: 446px;
-  right: -4px;
-  top: 4px;
+  width: 204px;
+  height: 422px;
+  right: 8px;
+  top: 16px;
   transform: rotate(3deg);
   z-index: 2;
   box-shadow:
-    0 36px 90px rgba(0,0,0,.72),
-    0 0 50px rgba(47,109,255,.18);
+    0 0 0 7px #050c1a,
+    0 0 0 8px rgba(34,211,238,.2),
+    0 36px 90px rgba(0,0,0,.72);
 }
 
 /* ── PHONE SHOT MEDIA CARDS ── */
@@ -757,16 +723,16 @@ p {
   .phone-screenshots-hero { min-height: 340px; }
 
   .psh-splash {
-    width: 154px;
-    height: 292px;
-    left: 0;
-    top: 24px;
+    width: 130px;
+    height: 268px;
+    left: 8px;
+    top: 36px;
   }
   .psh-home {
-    width: 182px;
-    height: 348px;
+    width: 158px;
+    height: 324px;
     right: 0;
-    top: 0;
+    top: 8px;
   }
 
   .actions { flex-direction: column; }
