@@ -448,7 +448,14 @@ p {
   object-fit: cover;
   object-position: top;
   display: block;
-  clip-path: inset(0 0 0 0 round 32px);
+}
+
+.psh-splash .psh-screenshot {
+  clip-path: inset(0 0 12px 0 round 32px);
+}
+
+.psh-home .psh-screenshot {
+  clip-path: inset(0 0 16px 0 round 32px);
 }
 
 /* cornice PNG libera, posizionata dai valori utente */
