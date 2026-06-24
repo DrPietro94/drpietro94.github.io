@@ -439,14 +439,19 @@ p {
 
 .psh-frame {
   position: absolute;
+  overflow: visible;
+}
+
+/* clip solo per lo screenshot */
+.psh-clip {
+  width: 100%;
+  height: 100%;
   border-radius: 32px;
   overflow: hidden;
   background: #06101e;
 }
 
 .psh-screenshot {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -454,16 +459,27 @@ p {
   display: block;
 }
 
-/* cornice PNG reale sovrapposta allo screenshot */
+/* cornice PNG libera, posizionata dai valori utente */
 .psh-mockup {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
   object-fit: fill;
   z-index: 5;
   mix-blend-mode: multiply;
   pointer-events: none;
+}
+
+.psh-splash .psh-mockup {
+  width: 246px;
+  height: 379px;
+  left: -32px;
+  top: -16px;
+}
+
+.psh-home .psh-mockup {
+  width: 300px;
+  height: 456px;
+  left: -41px;
+  top: -19px;
 }
 
 .psh-splash {
