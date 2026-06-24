@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Positioner — QUADRANTE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #030712;
+      color: #eef4ff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 56px;
+      padding: 48px 24px;
+    }
+    h1 { font-size: 22px; font-weight: 900; color: #22d3ee; letter-spacing: -.02em; }
+
+    /* ── SECTION ── */
+    .section {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .section-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #7a8ba8;
+      align-self: flex-start;
+    }
+
+    /* ── LOGO PREVIEW ── */
+    .logo-preview {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      overflow: hidden;
+      background-image: url('assets/quadrante/splash.png');
+      background-color: #040b1a;
+      box-shadow: 0 16px 48px rgba(47,109,255,.5), 0 0 0 1px rgba(255,255,255,.12) inset;
+    }
+
+    /* ── CARD PREVIEW ── */
+    .card-preview {
+      width: 280px;
+      height: 260px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #06101f;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .card-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── CONTROLS ── */
+    .controls { display: grid; gap: 16px; width: 100%; }
+    .control-row {
+      display: grid;
+      grid-template-columns: 110px 1fr 52px;
+      align-items: center;
+      gap: 12px;
+    }
+    label { font-size: 13px; font-weight: 700; color: #7a8ba8; }
+    input[type=range] { width: 100%; accent-color: #22d3ee; cursor: pointer; }
+    .val { font-size: 13px; font-weight: 700; color: #22d3ee; text-align: right; }
+
+    /* ── OUTPUT ── */
+    .output {
+      width: 100%;
+      background: rgba(9,18,40,.82);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-family: monospace;
+      font-size: 13px;
+      color: #94c9ff;
+      line-height: 1.8;
+      white-space: pre;
+    }
+
+    /* ── BUTTON ── */
+    .btn {
+      padding: 11px 26px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #2f6dff, #22d3ee);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(47,109,255,.4);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(47,109,255,.6); }
+    .copied { font-size: 12px; color: #22d3ee; opacity: 0; transition: opacity .3s; }
+    .copied.show { opacity: 1; }
+
+    hr { width: 100%; max-width: 480px; border: none; border-top: 1px solid rgba(255,255,255,.08); }
+  </style>
+</head>
+<body>
+
+  <h1>QUADRANTE — Positioner</h1>
+
+  <!-- ── LOGO ── -->
+  <div class="section">
+    <span class="section-title">Logo app (icona)</span>
+    <div class="logo-preview" id="logo-preview"></div>
+    <div class="controls">
+      <div class="control-row">
+        <label>Posizione X</label>
+        <input type="range" id="logo-px" min="0" max="100" value="49" step="1">
+        <span class="val" id="logo-px-v">49%</span>
+      </div>
+      <div class="control-row">
+        <label>Posizione Y</label>
+        <input type="range" id="logo-py" min="0" max="100" value="48" step="1">
+        <span class="val" id="logo-py-v">48%</span>
+      </div>
+      <div class="control-row">
+        <label>Dimensione</label>
+        <input type="range" id="logo-sz" min="100" max="500" value="225" step="5">
+        <span class="val" id="logo-sz-v">225%</span>
+      </div>
+    </div>
+    <div class="output" id="logo-out"></div>
+    <button class="btn" onclick="copia('logo')">Copia valori CSS</button>
+    <p class="copied" id="logo-copied">✓ Copiato!</p>
+  </div>
+
+  <hr>
+
+  <!-- ── STATISTICHE ── -->
+  <div class="section">
+    <span class="section-title">Card — Statistiche</span>
+    <div class="card-preview">
+      <img src="assets/quadrante/statistiche.png" id="stat-img" alt="Statistiche">
+    </div>
+    <div class="controls">
+      <div class="control-row">
+        <label>Posizione X</label>
+        <input type="range" id="stat-px" min="0" max="100" value="50" step="1">
+        <span class="val" id="stat-px-v">50%</span>
+      </div>
+      <div class="control-row">
+        <label>Posizione Y</label>
+        <input type="range" id="stat-py" min="0" max="100" value="0" step="1">
+        <span class="val" id="stat-py-v">0%</span>
+      </div>
+    </div>
+    <div class="output" id="stat-out"></div>
+    <button class="btn" onclick="copia('stat')">Copia valori CSS</button>
+    <p class="copied" id="stat-copied">✓ Copiato!</p>
+  </div>
+
+  <hr>
+
+  <!-- ── TOUR ── -->
+  <div class="section">
+    <span class="section-title">Card — Tour guidato</span>
+    <div class="card-preview">
+      <img src="assets/quadrante/tour.png" id="tour-img" alt="Tour">
+    </div>
+    <div class="controls">
+      <div class="control-row">
+        <label>Posizione X</label>
+        <input type="range" id="tour-px" min="0" max="100" value="50" step="1">
+        <span class="val" id="tour-px-v">50%</span>
+      </div>
+      <div class="control-row">
+        <label>Posizione Y</label>
+        <input type="range" id="tour-py" min="0" max="100" value="0" step="1">
+        <span class="val" id="tour-py-v">0%</span>
+      </div>
+    </div>
+    <div class="output" id="tour-out"></div>
+    <button class="btn" onclick="copia('tour')">Copia valori CSS</button>
+    <p class="copied" id="tour-copied">✓ Copiato!</p>
+  </div>
+
+  <hr>
+
+  <!-- ── CEDOLINO ── -->
+  <div class="section">
+    <span class="section-title">Card — Cedolino NoiPA</span>
+    <div class="card-preview" style="width:280px;height:340px;">
+      <img src="assets/quadrante/cedolino.jpg" id="ced-img" alt="Cedolino" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="controls">
+      <div class="control-row">
+        <label>Posizione X</label>
+        <input type="range" id="ced-px" min="0" max="100" value="50" step="1">
+        <span class="val" id="ced-px-v">50%</span>
+      </div>
+      <div class="control-row">
+        <label>Posizione Y</label>
+        <input type="range" id="ced-py" min="0" max="100" value="30" step="1">
+        <span class="val" id="ced-py-v">30%</span>
+      </div>
+    </div>
+    <div class="output" id="ced-out"></div>
+    <button class="btn" onclick="copia('ced')">Copia valori CSS</button>
+    <p class="copied" id="ced-copied">✓ Copiato!</p>
+  </div>
+
+  <script>
+    const items = {
+      logo: {
+        previewEl: document.getElementById('logo-preview'),
+        pxEl: document.getElementById('logo-px'),
+        pyEl: document.getElementById('logo-py'),
+        szEl: document.getElementById('logo-sz'),
+        outEl: document.getElementById('logo-out'),
+        type: 'bg'
+      },
+      stat: {
+        imgEl: document.getElementById('stat-img'),
+        pxEl: document.getElementById('stat-px'),
+        pyEl: document.getElementById('stat-py'),
+        outEl: document.getElementById('stat-out'),
+        type: 'obj'
+      },
+      tour: {
+        imgEl: document.getElementById('tour-img'),
+        pxEl: document.getElementById('tour-px'),
+        pyEl: document.getElementById('tour-py'),
+        outEl: document.getElementById('tour-out'),
+        type: 'obj'
+      },
+      ced: {
+        imgEl: document.getElementById('ced-img'),
+        pxEl: document.getElementById('ced-px'),
+        pyEl: document.getElementById('ced-py'),
+        outEl: document.getElementById('ced-out'),
+        type: 'obj'
+      }
+    };
+
+    function updateLogo() {
+      const it = items.logo;
+      const px = it.pxEl.value, py = it.pyEl.value, sz = it.szEl.value;
+      document.getElementById('logo-px-v').textContent = px + '%';
+      document.getElementById('logo-py-v').textContent = py + '%';
+      document.getElementById('logo-sz-v').textContent = sz + '%';
+      it.previewEl.style.backgroundSize = sz + '%';
+      it.previewEl.style.backgroundPosition = px + '% ' + py + '%';
+      it.outEl.textContent =
+        'background-size: ' + sz + '%;\nbackground-position: ' + px + '% ' + py + '%;';
+    }
+
+    function updateCard(key) {
+      const it = items[key];
+      const px = it.pxEl.value, py = it.pyEl.value;
+      document.getElementById(key + '-px-v').textContent = px + '%';
+      document.getElementById(key + '-py-v').textContent = py + '%';
+      it.imgEl.style.objectPosition = px + '% ' + py + '%';
+      it.outEl.textContent = 'object-position: ' + px + '% ' + py + '%;';
+    }
+
+    items.logo.pxEl.addEventListener('input', updateLogo);
+    items.logo.pyEl.addEventListener('input', updateLogo);
+    items.logo.szEl.addEventListener('input', updateLogo);
+    items.stat.pxEl.addEventListener('input', () => updateCard('stat'));
+    items.stat.pyEl.addEventListener('input', () => updateCard('stat'));
+    items.tour.pxEl.addEventListener('input', () => updateCard('tour'));
+    items.tour.pyEl.addEventListener('input', () => updateCard('tour'));
+    items.ced.pxEl.addEventListener('input', () => updateCard('ced'));
+    items.ced.pyEl.addEventListener('input', () => updateCard('ced'));
+
+    function copia(key) {
+      const txt = document.getElementById(key + '-out').textContent;
+      navigator.clipboard.writeText(txt).then(() => {
+        const el = document.getElementById(key + '-copied');
+        el.classList.add('show');
+        setTimeout(() => el.classList.remove('show'), 2000);
+      });
+    }
+
+    updateLogo();
+    updateCard('stat');
+    updateCard('tour');
+    updateCard('ced');
+  </script>
+</body>
+</html>
