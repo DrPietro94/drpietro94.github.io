@@ -119,6 +119,91 @@
     @media (max-width: 860px) {
       .pricing-grid { grid-template-columns: 1fr; }
     }
+
+    .q-app-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      overflow: hidden;
+      background-image: url('assets/quadrante/splash.png');
+      background-size: 225%;
+      background-position: 49% 48%;
+      background-color: #040b1a;
+      margin-bottom: 24px;
+      box-shadow:
+        0 16px 48px rgba(47,109,255,.38),
+        0 0 0 1px rgba(255,255,255,.12) inset;
+      flex-shrink: 0;
+    }
+
+    /* Hero gradient title */
+    .hero-title {
+      background: linear-gradient(130deg, #ffffff 0%, #c4e0ff 50%, #22d3ee 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Live status pill */
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px 5px 11px;
+      border-radius: 100px;
+      background: rgba(52, 211, 153, .08);
+      border: 1px solid rgba(52, 211, 153, .22);
+      color: #86efac;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      margin-bottom: 16px;
+    }
+    .badge-live::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 0 3px rgba(52, 211, 153, .25);
+      flex-shrink: 0;
+    }
+
+    /* Feature card number */
+    .func-num {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      color: var(--cyan);
+      opacity: .38;
+      margin-bottom: 6px;
+    }
+
+    /* Section intro wrapper */
+    .section-intro {
+      margin-top: 56px;
+      margin-bottom: 28px;
+    }
+    .section-intro h2 { margin-bottom: 10px; }
+    .section-intro p  { margin-bottom: 0; font-size: 16px; }
+
+    /* Pricing popular badge */
+    .pricing-popular {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: linear-gradient(90deg, rgba(47,109,255,.15), rgba(34,211,238,.1));
+      border: 1px solid rgba(34, 211, 238, .22);
+      color: var(--cyan);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -148,8 +233,10 @@
     <main>
       <section class="project-hero">
         <div>
+          <div class="q-app-icon" aria-hidden="true"></div>
+          <span class="badge-live">v1.0 · Live su Google Play &amp; App Store</span>
           <span class="eyebrow">App Mobile · Android &amp; iOS</span>
-          <h1>QUADRANTE</h1>
+          <h1><span class="hero-title">QUADRANTE</span></h1>
           <p>
             L'app pensata per il personale della Polizia Penitenziaria.
             Turni, straordinari, cedolino NoiPA, spettanze e FESI —
@@ -167,15 +254,17 @@
                 Google Play
               </div>
             </a>
-            <div class="store-badge coming">
+            <a class="store-badge"
+               href="https://apps.apple.com/it/app/quadrante-turni-polizia/id6779558780"
+               target="_blank" rel="noopener">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
               </svg>
               <div class="badge-label">
-                <small>Prossimamente su</small>
+                <small>Disponibile su</small>
                 App Store
               </div>
-            </div>
+            </a>
           </div>
         </div>
         <div class="device-preview phone-screenshots-hero">
@@ -206,7 +295,7 @@
         </article>
 
         <article class="media-card phone-shot">
-          <img src="assets/quadrante/statistiche.png" alt="Statistiche mensili QUADRANTE">
+          <img src="assets/quadrante/statistiche.png" alt="Statistiche mensili QUADRANTE" style="object-position: 50% 16%;">
           <div>
             <strong>Statistiche</strong>
             <span>Notturni, festivi, monte ore straordinario, superfestivi, RS mancanti e avvisi automatici su RR maturati.</span>
@@ -222,7 +311,7 @@
         </article>
 
         <article class="media-card phone-shot">
-          <img src="assets/quadrante/tour.png" alt="Onboarding guidato QUADRANTE">
+          <img src="assets/quadrante/tour.png" alt="Onboarding guidato QUADRANTE" style="object-position: 51% 69%;">
           <div>
             <strong>Tour guidato</strong>
             <span>23 step interattivi al primo avvio: il mascot agente accompagna nella configurazione e mostra tutte le funzioni.</span>
@@ -249,35 +338,42 @@
         <h2>Tutto quello che serve, niente di superfluo.</h2>
         <div class="functionality-grid">
           <article>
+            <span class="func-num">01</span>
             <b>Calendario turni</b>
             <p>Vista mensile con celle colorate. Riepilogo automatico di turni, ore lavorate e assenze in fondo allo schermo.</p>
           </article>
           <article>
+            <span class="func-num">02</span>
             <b>Calcolo automatico</b>
-            <p>M, P, N, RS con orari configurabili. Straordinario, notturno e festivo calcolati su ogni giornata senza toggle manuali.</p>
+            <p>Inserisci il turno e l'app calcola in automatico straordinario feriale, notturno e festivo. Nessun conteggio manuale, nessun errore.</p>
           </article>
           <article>
+            <span class="func-num">03</span>
             <b>Contatori RC/RR</b>
-            <p>Riposi compensativi e rientri: maturati, fruiti e residui aggiornati in tempo reale per ogni chiusura mensile.</p>
+            <p>Sai sempre quanti riposi compensativi hai maturato e quanti rientri ti spettano. Aggiornati automaticamente ad ogni chiusura mensile.</p>
           </article>
           <article>
+            <span class="func-num">04</span>
             <b>Monte ore</b>
-            <b></b>
-            <p>Straordinario a pagamento e ore a credito, con rounding mensile automatico secondo le regole contrattuali.</p>
+            <p>Lo straordinario non pagato si accumula nel monte ore. Decidi tu ogni mese quante ore mettere a pagamento e quante tenere in banca.</p>
           </article>
           <article>
+            <span class="func-num">05</span>
             <b>Cedolino NoiPA</b>
-            <p>Import PDF con riconoscimento automatico delle voci. LORDO, trattenute previdenziali (9,15% + 58,40) e NETTO.</p>
+            <p>Fotografa o importa il PDF del cedolino: l'app riconosce le voci in automatico e calcola LORDO, trattenute e NETTO con le aliquote reali del contratto.</p>
           </article>
           <article>
+            <span class="func-num">06</span>
             <b>FESI</b>
-            <p>Contatori annuali A1/A2/A3, turni pagabili e quadranti, con avanzamento automatico e vista dedicata.</p>
+            <p>Conta i tuoi turni A1 e A2 e verifica in tempo reale se hai raggiunto la soglia per accedere al FESI dell'anno. Turni pagabili e quadranti sempre sotto controllo.</p>
           </article>
           <article>
+            <span class="func-num">07</span>
             <b>Notifiche push</b>
             <p>Promemoria automatici configurabili per turni, permessi in scadenza e avvisi su RR maturati.</p>
           </article>
           <article>
+            <span class="func-num">08</span>
             <b>Tour guidato</b>
             <p>23 step interattivi con spotlight e mascot agente. Tour PRO separato per le funzioni avanzate.</p>
           </article>
@@ -285,9 +381,11 @@
       </section>
 
       <!-- PRICING -->
-      <div class="eyebrow" style="margin-top:42px;">Piani</div>
-      <h2 style="margin-bottom:4px;">Gratis per sempre, PRO per chi vuole di più.</h2>
-      <p style="margin-bottom:0;">Le funzioni principali sono gratuite. Il piano PRO sblocca cedolino, spettanze avanzate e statistiche complete.</p>
+      <div class="section-intro">
+        <div class="eyebrow">Piani</div>
+        <h2>Gratis per sempre, PRO per chi vuole di più.</h2>
+        <p>Le funzioni principali sono gratuite. Il piano PRO sblocca cedolino, spettanze avanzate e statistiche complete.</p>
+      </div>
       <div class="pricing-grid">
         <div class="pricing-card">
           <div class="pricing-tier">Free</div>
@@ -315,6 +413,7 @@
           </ul>
         </div>
         <div class="pricing-card featured">
+          <span class="pricing-popular">Consigliato</span>
           <div class="pricing-tier">PRO</div>
           <div class="pricing-price">€3,99 <small>/ mese</small></div>
           <p class="pricing-desc">Accesso completo a tutte le funzionalità. Disponibile anche annuale a €29,99.</p>
@@ -331,18 +430,18 @@
 
       <section class="case-study" style="margin-top:42px;">
         <article class="case-block">
-          <span class="eyebrow">Architettura</span>
-          <h2>Flutter modulare, dati locali.</h2>
+          <span class="eyebrow">Come è costruita</span>
+          <h2>Tutto sul tuo telefono, zero server.</h2>
           <p>
-            L'app è organizzata per feature isolate con pattern data/domain/presentation.
-            Riverpod gestisce lo stato, GoRouter la navigazione, SQLite il database locale.
-            RevenueCat gestisce gli abbonamenti in-app su Android e iOS.
+            QUADRANTE funziona completamente offline: nessun account, nessun cloud, nessun dato che esce dal tuo dispositivo.
+            È costruita con Flutter per girare sia su Android che iOS con la stessa codebase.
+            Gli abbonamenti in-app sono gestiti tramite App Store e Google Play.
           </p>
           <ul class="case-list">
-            <li>Flutter con struttura modulare: home, shifts, calendar, statistics, payroll, spettanze, FESI, settings.</li>
-            <li>Riverpod per state management reattivo, GoRouter per navigazione dichiarativa.</li>
-            <li>SQLite locale per tutti i dati — nessun account richiesto, tutto sul dispositivo.</li>
-            <li>RevenueCat per acquisti in-app cross-platform (Android + iOS).</li>
+            <li>Funziona senza connessione internet — i tuoi turni sono sempre disponibili.</li>
+            <li>Tutti i dati (turni, cedolini, statistiche) restano sul tuo telefono e non vengono mai condivisi.</li>
+            <li>Disponibile su Android e iOS con le stesse funzionalità su entrambe le piattaforme.</li>
+            <li>Acquisti in-app sicuri tramite Google Play e App Store.</li>
           </ul>
         </article>
 
@@ -350,28 +449,28 @@
           <span class="eyebrow">Cedolino e calcoli</span>
           <h2>Dal PDF alle trattenute reali.</h2>
           <p>
-            Il parser PDF riconosce le voci del cedolino NoiPA e le abbina ai turni del mese corrispondente,
+            Importa il PDF del cedolino NoiPA e l'app abbina automaticamente le voci ai turni del mese,
             tenendo conto dello sfasamento di 2 mesi sugli straordinari.
-            Le trattenute previdenziali usano le aliquote contrattuali reali.
+            Le trattenute vengono calcolate con le aliquote reali del contratto di Polizia Penitenziaria.
           </p>
           <ul class="case-list">
-            <li>Syncfusion PDF: parsing voci NoiPA con riconoscimento automatico della struttura.</li>
-            <li>Formula trattenute previdenziali: 9,15% sulla base + €58,40 fisso mensili.</li>
-            <li>Straordinari cedolino abbinati al mese di competenza reale (sfasamento 2 mesi).</li>
+            <li>Riconoscimento automatico delle voci del cedolino NoiPA senza inserimento manuale.</li>
+            <li>Trattenute previdenziali calcolate con le aliquote contrattuali reali.</li>
+            <li>Straordinari abbinati al mese di competenza reale, con lo sfasamento di 2 mesi correttamente gestito.</li>
           </ul>
         </article>
 
         <article class="case-block">
           <span class="eyebrow">Distribuzione</span>
-          <h2>Android live, iOS in arrivo.</h2>
+          <h2>Disponibile su Android e iOS.</h2>
           <p>
-            Quadrante è disponibile su Google Play Store. La versione iOS è in fase di
-            pubblicazione su App Store con le stesse funzionalità, incluse notifiche push
-            e widget home screen.
+            Quadrante è disponibile sia su Google Play Store che su App Store.
+            Stessa codebase Flutter, stesse funzionalità su entrambe le piattaforme —
+            incluse notifiche push e widget home screen.
           </p>
           <ul class="case-list">
             <li>Android: live su Google Play Store — v1.0.0.</li>
-            <li>iOS: in pubblicazione su App Store — notifiche push e ATT/AdMob inclusi.</li>
+            <li>iOS: live su App Store — v1.0.0.</li>
             <li>Widget home screen iOS (Swift, App Group) per visualizzare il turno del giorno.</li>
           </ul>
         </article>
