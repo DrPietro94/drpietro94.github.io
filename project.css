@@ -464,7 +464,6 @@ p {
   position: absolute;
   object-fit: fill;
   z-index: 5;
-  mix-blend-mode: multiply;
   pointer-events: none;
 }
 
