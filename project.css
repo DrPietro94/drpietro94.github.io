@@ -439,45 +439,45 @@ p {
 
 .psh-frame {
   position: absolute;
-  overflow: visible;
+  border-radius: 32px;
+  overflow: hidden;
+  background: #06101e;
 }
 
-.psh-screenshot {
+/* notch */
+.psh-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 6px;
+  background: #040b18;
+  border-radius: 0 0 6px 6px;
+  z-index: 10;
+}
+
+/* home indicator */
+.psh-frame::after {
+  content: "";
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 3px;
+  background: rgba(255,255,255,.32);
+  border-radius: 2px;
+  z-index: 10;
+}
+
+.psh-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
   display: block;
-}
-
-.psh-splash .psh-screenshot {
-  clip-path: inset(0 0 12px 0 round 32px);
-}
-
-.psh-home .psh-screenshot {
-  clip-path: inset(0 0 16px 0 round 32px);
-}
-
-/* cornice PNG libera, posizionata dai valori utente */
-.psh-mockup {
-  position: absolute;
-  object-fit: fill;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.psh-splash .psh-mockup {
-  width: 246px;
-  height: 379px;
-  left: -32px;
-  top: -16px;
-}
-
-.psh-home .psh-mockup {
-  width: 300px;
-  height: 456px;
-  left: -41px;
-  top: -19px;
 }
 
 .psh-splash {
@@ -487,6 +487,10 @@ p {
   top: 56px;
   transform: rotate(-5deg);
   opacity: .7;
+  box-shadow:
+    0 0 0 7px #050c1a,
+    0 0 0 8px rgba(255,255,255,.09),
+    0 24px 60px rgba(0,0,0,.6);
   z-index: 1;
 }
 .psh-home {
@@ -496,7 +500,10 @@ p {
   top: 16px;
   transform: rotate(3deg);
   z-index: 2;
-  box-shadow: 0 36px 90px rgba(0,0,0,.72);
+  box-shadow:
+    0 0 0 7px #050c1a,
+    0 0 0 8px rgba(34,211,238,.2),
+    0 36px 90px rgba(0,0,0,.72);
 }
 
 /* ── PHONE SHOT MEDIA CARDS ── */
