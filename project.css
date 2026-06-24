@@ -437,29 +437,66 @@ p {
 }
 .phone-screenshots-hero::after { display: none; }
 
-.psh-frame {
+/* ── corpo telefono ── */
+.psh-phone {
   position: absolute;
-  border-radius: 32px;
+  background: linear-gradient(160deg, #1e2647 0%, #0c1228 55%, #070d1c 100%);
+  border-radius: 38px;
+  padding: 11px;
+  border: 1px solid rgba(255,255,255,.09);
+}
+
+/* tasti volume (sinistra: mute + vol+ + vol-) */
+.psh-phone::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 86px;
+  width: 3px;
+  height: 22px;
+  background: #0c1122;
+  border-radius: 2px 0 0 2px;
+  box-shadow: 0 34px 0 #0c1122, 0 62px 0 #0c1122;
+}
+
+/* tasto power (destra) */
+.psh-phone::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 102px;
+  width: 3px;
+  height: 44px;
+  background: #0c1122;
+  border-radius: 0 2px 2px 0;
+}
+
+/* area schermo */
+.psh-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
   overflow: hidden;
   background: #06101e;
 }
 
-/* notch */
-.psh-frame::before {
+/* Dynamic Island */
+.psh-screen::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: 9px;
   left: 50%;
   transform: translateX(-50%);
-  width: 56px;
-  height: 6px;
-  background: #040b18;
-  border-radius: 0 0 6px 6px;
+  width: 66px;
+  height: 22px;
+  background: #020609;
+  border-radius: 14px;
   z-index: 10;
 }
 
 /* home indicator */
-.psh-frame::after {
+.psh-screen::after {
   content: "";
   position: absolute;
   bottom: 7px;
@@ -471,24 +508,25 @@ p {
   border-radius: 2px;
   z-index: 10;
 }
-.psh-frame img {
+
+.psh-screen img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
   display: block;
 }
+
 .psh-splash {
   width: 170px;
   height: 348px;
   left: 16px;
   top: 56px;
   transform: rotate(-5deg);
-  opacity: .7;
+  opacity: .72;
   box-shadow:
-    0 0 0 7px #050c1a,
-    0 0 0 8px rgba(255,255,255,.09),
-    0 24px 60px rgba(0,0,0,.6);
+    0 24px 64px rgba(0,0,0,.65),
+    0 0 0 1px rgba(255,255,255,.04) inset;
   z-index: 1;
 }
 .psh-home {
@@ -499,9 +537,9 @@ p {
   transform: rotate(3deg);
   z-index: 2;
   box-shadow:
-    0 0 0 7px #050c1a,
-    0 0 0 8px rgba(34,211,238,.2),
-    0 36px 90px rgba(0,0,0,.72);
+    0 36px 90px rgba(0,0,0,.72),
+    0 0 60px rgba(47,109,255,.14),
+    0 0 0 1px rgba(34,211,238,.18) inset;
 }
 
 /* ── PHONE SHOT MEDIA CARDS ── */
